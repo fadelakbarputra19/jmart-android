@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -24,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final Gson gson = new Gson();
     private static Account loggedAccount = null;
 
-    public static Account getLoggedAccount() {
+    public static Account getLoggedAccount(){
         return loggedAccount;
     }
 
@@ -33,6 +34,14 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        TextView register = findViewById(R.id.TextToRegister);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
         EditText textemail = findViewById(R.id.InputEmailLogin);
         EditText textpassword = findViewById(R.id.InputPasswordLogin);
         Button buttonlogin = findViewById(R.id.ButtonLogin);
@@ -44,13 +53,14 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject object = new JSONObject(response);
-                            if (object != null) {
+                            if(object != null){
                                 Toast.makeText(LoginActivity.this, "Login Success!", Toast.LENGTH_SHORT);
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 loggedAccount = gson.fromJson(object.toString(), Account.class);
                                 startActivity(intent);
                             }
-                        } catch (JSONException e) {
+                        }
+                        catch (JSONException e){
                             e.printStackTrace();
                             Toast.makeText(LoginActivity.this, "Login Error!", Toast.LENGTH_SHORT);
                         }
@@ -61,5 +71,4 @@ public class LoginActivity extends AppCompatActivity {
                 requestQueue.add(loginRequest);
             }
         });
-    }
-}
+    }}

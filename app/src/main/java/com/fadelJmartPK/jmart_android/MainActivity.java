@@ -17,6 +17,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView userMain = (TextView) findViewById(R.id.TextHelloUser);
-        userMain.setText("Welcome" + LoginActivity.getLoggedAccount().name);
+        userMain.setText("Welcome " + LoginActivity.getLoggedAccount().name);
     }
 }
