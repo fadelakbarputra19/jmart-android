@@ -1,22 +1,30 @@
 package com.fadelJmartPK.jmart_android;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.google.android.material.tabs.TabLayout;
+
 public class MainActivity extends AppCompatActivity {
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView userMain = (TextView) findViewById(R.id.TextHelloUser);
-        userMain.setText("Welcome " + LoginActivity.getLoggedAccount().name);
+
+        tabLayout = findViewById(R.id.productTab);
+        viewPager = findViewById(R.id.viewpager);
+
+        tabLayout.setupWithViewPager(viewPager);
+
+        VPAdapter vpAdapter = new VPAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        vpAdapter.addFragment(new fragment1(), "Products");
+        vpAdapter.addFragment(new fragment2(), "Filter");
+        viewPager.setAdapter(vpAdapter);
     }
 }

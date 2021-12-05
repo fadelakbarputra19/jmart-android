@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RequestFactory {
-    private static final String URL_FORMAT_ID = "http://192.168.1.3:6969/%s/%d";
-    private static final String URL_FORMAT_PAGE = "http://192.168.1.3:6969%s/page";
+    private static final String URL_FORMAT_ID = "http://192.168.1.8:6969/%s/%d";
+    private static final String URL_FORMAT_PAGE = "http://192.168.1.8:6969%s/page";
 
     public static StringRequest getById
             (
