@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -37,6 +38,9 @@ public class RegisterActivity extends AppCompatActivity {
         EditText textEmail = findViewById(R.id.InputEmailRegister);
         EditText textPassword = findViewById(R.id.InputPasswordRegister);
         Button buttonRegister = findViewById(R.id.ButtonRegister);
+
+
+
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override

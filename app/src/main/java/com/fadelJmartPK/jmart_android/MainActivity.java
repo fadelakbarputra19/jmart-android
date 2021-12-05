@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         }
         if (item.getItemId() == R.id.add_button) {
             Toast.makeText(this, "Search Selected", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, CreateProductActivity.class);
+            startActivity(intent);
         }
         if (item.getItemId() == R.id.account_button) {
             Toast.makeText(this, "Account Selected", Toast.LENGTH_SHORT).show();
