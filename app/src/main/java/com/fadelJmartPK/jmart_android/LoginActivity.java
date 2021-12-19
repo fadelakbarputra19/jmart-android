@@ -10,23 +10,29 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
 import com.fadelJmartPK.jmart_android.model.Account;
+import com.fadelJmartPK.jmart_android.model.Store;
 import com.fadelJmartPK.jmart_android.request.LoginRequest;
-
+import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements Response.Listener<String>, Response.ErrorListener {
     private static final Gson gson = new Gson();
-    private static Account loggedAccount = null;
+    public static Account loggedAccount = null;
 
     public static Account getLoggedAccount(){
         return loggedAccount;
+    }
+
+    public static void setLoggedAccount(Account account){
+        loggedAccount = account;
     }
 
     @Override
@@ -34,41 +40,73 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        TextView register = findViewById(R.id.TextToRegister);
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
-        EditText textemail = findViewById(R.id.InputEmailLogin);
-        EditText textpassword = findViewById(R.id.InputPasswordLogin);
-        Button buttonlogin = findViewById(R.id.ButtonLogin);
-        buttonlogin.setOnClickListener(new View.OnClickListener() {
+        EditText editEmail = findViewById(R.id.InputEmailLogin);
+        EditText editPassword = findViewById(R.id.InputPasswordLogin);
+        Button loginButton = findViewById(R.id.ButtonLogin);
+        TextView registerLogin = findViewById(R.id.TextToRegister);
+
+        editEmail.setText("kirameku99@gmail.com");
+        editPassword.setText("Kira123");
+
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Response.Listener<String> listener = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject object = new JSONObject(response);
-                            if(object != null){
-                                Toast.makeText(LoginActivity.this, "Login Success!", Toast.LENGTH_SHORT);
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                loggedAccount = gson.fromJson(object.toString(), Account.class);
-                                startActivity(intent);
+                LoginRequest newLogin = new LoginRequest(
+                        editEmail.getText().toString(),
+                        editPassword.getText().toString(),
+                        new Response.Listener<String>() {
+                            public void onResponse(String response) {
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    if (jsonObject != null) {
+                                        Toast.makeText(getApplicationContext(), "Login berhasil.", Toast.LENGTH_SHORT).show();
+                                        loggedAccount = gson.fromJson(jsonObject.toString(), Account.class);
+                                        Intent loginSuccess = new Intent(LoginActivity.this, MainActivity.class);
+                                        startActivity(loginSuccess);
+                                    }
+                                } catch (JSONException e) {
+                                    Toast.makeText(LoginActivity.this, "Login gagal.", Toast.LENGTH_SHORT).show();
+                                    e.printStackTrace();
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Toast.makeText(getApplicationContext(),
+                                        "Terdapat kesalahan sistem", Toast.LENGTH_SHORT).show();
                             }
                         }
-                        catch (JSONException e){
-                            e.printStackTrace();
-                            Toast.makeText(LoginActivity.this, "Login Error!", Toast.LENGTH_SHORT);
-                        }
-                    }
-                };
-                LoginRequest loginRequest = new LoginRequest(textemail.getText().toString(), textpassword.getText().toString(), listener, null);
-                RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
-                requestQueue.add(loginRequest);
+                );
+                RequestQueue queue = Volley.newRequestQueue(LoginActivity.this);
+                queue.add(newLogin);
             }
         });
-    }}
+        registerLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registerPage = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(registerPage);
+            }
+        });
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+
+    }
+
+    @Override
+    public void onResponse(String response) {
+
+    }
+
+    public static void reloadLoggedAccount(String response){
+        loggedAccount = gson.fromJson(response, Account.class);
+    }
+
+    public static void insertLoggedAccountStore(String response){
+        Store newStore = gson.fromJson(response, Store.class);
+        loggedAccount.store = newStore;
+    }
+}
