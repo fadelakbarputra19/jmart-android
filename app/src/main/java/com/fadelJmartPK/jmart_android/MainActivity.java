@@ -15,6 +15,10 @@ import android.widget.Toast;
 import com.google.android.material.tabs.TabLayout;
 import androidx.appcompat.widget.SearchView;
 
+/**
+ * Activity untuk di main activity, dapat ke search, invoice personal, create product, dan about me
+ * @author Muhammad Fadel Akbar Putra
+ */
 public class MainActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;

@@ -6,6 +6,10 @@ import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Megirim request ke api untuk melakukan registrasi store
+ * @author Muhammad Fadel Akbar Putra
+ */
 public class RegisterRequest extends StringRequest {
     private static final String URL =  "http://192.168.1.7:6969/account/register";
     private final Map<String , String> params;

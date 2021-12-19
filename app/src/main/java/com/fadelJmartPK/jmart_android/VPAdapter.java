@@ -10,6 +10,11 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 
+/**
+ * Activity melakukan perpindahan tab
+ * @author Muhammad Fadel Akbar Putra
+ */
+
 public class VPAdapter extends FragmentPagerAdapter {
 
     private final ArrayList<Fragment> fragmentArrayList = new ArrayList<>();

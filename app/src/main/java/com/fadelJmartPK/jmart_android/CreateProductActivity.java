@@ -25,6 +25,11 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
+
+/**
+ * Activity untuk membuat sebuah product jika sudah register store
+ * @author Muhammad Fadel Akbar Putra
+ */
 public class CreateProductActivity extends AppCompatActivity {
 
     private static final Gson gson = new Gson();

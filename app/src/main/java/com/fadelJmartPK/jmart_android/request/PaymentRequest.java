@@ -9,6 +9,10 @@ import com.fadelJmartPK.jmart_android.LoginActivity;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Mengirim request ke api untuk melakukan pembayaran
+ * @author Muhamamd Fadel Akbar Putra
+ */
 public class PaymentRequest extends StringRequest {
     public static final String URL = "http://192.168.1.7:6969/payment/create";
     public final Map<String,String> params;

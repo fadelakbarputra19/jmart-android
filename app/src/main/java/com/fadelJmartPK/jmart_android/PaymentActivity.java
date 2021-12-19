@@ -28,6 +28,11 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Activity untuk melakukan pembayaran product
+ * @author Muhammad Fadel Akbar Putra
+ */
+
 public class PaymentActivity extends AppCompatActivity {
 
     private static final Gson gson = new Gson();

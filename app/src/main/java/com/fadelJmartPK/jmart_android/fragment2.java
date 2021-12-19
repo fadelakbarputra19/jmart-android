@@ -38,6 +38,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+/**
+ * Class ini merupakan fragment untuk melakukan filter product
+ * @author Muhammad Fadel Akbar Putra
+ */
+
 public class fragment2 extends Fragment {
 
     private static final Gson gson = new Gson();

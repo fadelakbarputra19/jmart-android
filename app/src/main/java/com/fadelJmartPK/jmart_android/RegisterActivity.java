@@ -24,6 +24,10 @@ import com.fadelJmartPK.jmart_android.model.Account;
 import com.fadelJmartPK.jmart_android.request.LoginRequest;
 import com.fadelJmartPK.jmart_android.request.RegisterRequest;
 
+/**
+ * Activity menampilkan detail produk yang ada
+ * @author Muhammad Fadel Akbar Putra
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private static final Gson gson = new Gson();

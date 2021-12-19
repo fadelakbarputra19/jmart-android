@@ -23,6 +23,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+/**
+ * Activity untuk melakukan login
+ * @author Muhammad Fadel Akbar Putra
+ */
 public class LoginActivity extends AppCompatActivity implements Response.Listener<String>, Response.ErrorListener {
     private static final Gson gson = new Gson();
     public static Account loggedAccount = null;

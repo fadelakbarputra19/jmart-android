@@ -26,9 +26,9 @@ import java.util.ArrayList;
 public class PersonalHistory extends AppCompatActivity {
 
     /**
-     * @description
      * Disini variabel di inisiasi dan onCreate, akan ditampilkan
      * list dari history ke ListPersonalHistory
+     * @author Muhammad Fadel Akbar Putra
      */
 
     public static ArrayList<Payment> paymentList = new ArrayList<>();

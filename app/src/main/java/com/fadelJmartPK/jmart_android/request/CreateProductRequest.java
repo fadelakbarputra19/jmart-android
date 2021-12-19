@@ -9,6 +9,10 @@ import com.fadelJmartPK.jmart_android.LoginActivity;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Mengirim request ke rest api untuk membuat product
+ * @author Muhammad Fadel Akbar Putra
+ */
 public class CreateProductRequest extends StringRequest {
 
     public static final String URL = "http://192.168.1.7:6969/product/create";

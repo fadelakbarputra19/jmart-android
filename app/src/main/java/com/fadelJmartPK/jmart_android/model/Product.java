@@ -1,5 +1,8 @@
 package com.fadelJmartPK.jmart_android.model;
-
+/**
+ * Model yang sesuai dengan backend Product
+ * @author Muhammad Fadel Akbar Putra
+ */
 public class Product extends Serializable{
     public int accountId;
     public ProductCategory category;

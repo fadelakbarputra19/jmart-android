@@ -1,5 +1,8 @@
 package com.fadelJmartPK.jmart_android.model;
-
+/**
+ * Model yang sesuai dengan backend ProductCategory
+ * @author Muhammad Fadel Akbar Putra
+ */
 public enum ProductCategory {
     BOOK,
     KITCHEN,

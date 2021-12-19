@@ -10,6 +10,10 @@ import com.fadelJmartPK.jmart_android.model.Product;
 
 import java.util.ArrayList;
 
+/**
+ *
+ */
+
 public class ListAdapter extends BaseAdapter {
     private static ArrayList<Product> listProduct;
     private LayoutInflater mInflater;

@@ -41,6 +41,10 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * Class ini merupakan fragment untuk menampilkan daftar product
+ * @author Muhammad Fadel Akbar Putra
+ */
 public class fragment1 extends Fragment {
 
     private static final Gson gson = new Gson();

@@ -3,6 +3,10 @@ package com.fadelJmartPK.jmart_android.model;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Model yang sesuai dengan backend payment
+ * @author Muhammad Fadel Akbar Putra
+ */
 public class Payment extends Invoice{
     public Shipment shipment;
     public int productCount;
